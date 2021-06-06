@@ -7,7 +7,7 @@ AnatMat = niftiread(infoAnat);
 figure
 histogram(CTmat)
 
-CTthresh = prctile(CTmat(:),95); % 95% percentile threshold to show the electrodes
+CTthresh = prctile(CTmat(:),99.996); % 95% percentile threshold to show the electrodes
 
 fig = uifigure('Name','Plotted Coregestered Images','Position',[100 100 1600 800]);
 ax1 = uiaxes(fig);
@@ -57,17 +57,17 @@ CTmat(~GWCMskFill) = 0;
 
 % Threshold to only keep the electrodes
 CTmatBi = CTmat;
-CTmatBi = CTmatBi > 3000;
+CTmatBi = CTmatBi > 3500;
 
-% Test regionprops3
-stats = regionprops3(CTmatBi);
-
-figure
-isosurface(CTmatBi,0.5)
-hold on
-scatter3(stats.Centroid(:,1),stats.Centroid(:,2),stats.Centroid(:,3),60,'MarkerFaceColor',[1 0 0])
-
-% Not good
+% % Test regionprops3
+% stats = regionprops3(CTmatBi);
+% 
+% figure
+% isosurface(CTmatBi,0.5)
+% hold on
+% scatter3(stats.Centroid(:,1),stats.Centroid(:,2),stats.Centroid(:,3),60,'MarkerFaceColor',[1 0 0])
+% 
+% % Not good
 
 % Identify object from slices
 for i = 1:size(CTmatBi,3)
@@ -91,7 +91,7 @@ centroidsAll = cat(1,centroids{:});
 figure
 isosurface(CTmatBi,0.5)
 hold on
-scatter3(centroidsAll(:,2),centroidsAll(:,3),centroidsAll(:,1),100,'MarkerFaceColor',[1 0 0])
+scatter3(centroidsAll(:,2),centroidsAll(:,3),centroidsAll(:,1),200,'MarkerFaceColor',[1 0 0])
 %
 Y = pdist(centroidsAll);
 Adis = squareform(Y);
@@ -103,12 +103,12 @@ Z = linkage(Y);
 
 dendrogram(Z)
 
-T = cluster(Z,'maxclust',11);
+T = cluster(Z,'maxclust',10);
 
 figure
 isosurface(CTmatBi,0.5)
 hold on
-for i = 1:11
+for i = 1:10
     scatter3(centroidsAll(T == i,2),centroidsAll(T == i,3),centroidsAll(T == i,1),200,'MarkerFaceColor',[rand rand rand])
 end
 
