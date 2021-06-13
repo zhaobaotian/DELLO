@@ -112,8 +112,25 @@ for i = 1:10
     scatter3(centroidsAll(T == i,2),centroidsAll(T == i,3),centroidsAll(T == i,1),200,'MarkerFaceColor',[rand rand rand])
 end
 
+% Identify the coordinates of target and entry
+% Show the coordinates in with the slide bar to manually select target and
+% entry
+%% test the slices
+Corr = centroidsAll(T == 1,:);
+figure
+isosurface(CTmatBi,0.5)
+hold on
+scatter3(Corr(:,2),Corr(:,3),Corr(:,1),200,'MarkerFaceColor',[1 0 0])
+for i = 1:19
+    figure
+    A = squeeze(AnatMat(:,:,Corr(i,1)));
+    B = squeeze(CTmat(:,:,Corr(i,1)));
+    C = imfuse(A,B,'blend');
+    imagesc(C)
+    hold on
+    plot(Corr(i,2),Corr(i,3),'r*')
+    colormap('gray')    
+end
 
 
-
-
-
+%%

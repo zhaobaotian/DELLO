@@ -8,14 +8,27 @@ classdef DELLO_loc < handle
         
         rPostCT % coregistered CT
         
+        CorrImage
+        
+        AnatMat
+        CTmat
+        
+        UIFigure
+        
+        UISlider
+        
+        UIAX
+        
+        
+        
         
     end
     
     methods
-        function obj = DELLO_loc(inputArg1,inputArg2)
+        function obj = DELLO_loc()
             %DELLO_LOC Construct an instance of this class
             %   Detailed explanation goes here
-            obj.Property1 = inputArg1 + inputArg2;
+            
         end
         
 

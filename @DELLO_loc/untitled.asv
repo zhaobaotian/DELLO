@@ -1,0 +1,3 @@
+function updateGauge(sld,cg)
+cg.Value = sld.Value;
+end
