@@ -1,6 +1,7 @@
 cd('D:\DELLO_data\dengshengyang')
 infoCT   = niftiinfo('postCT.nii');
 infoAnat = niftiinfo('r3DT1.nii');
+infoAnat2 = niftiinfo('3DT1.nii');
 CTmat = niftiread(infoCT);
 AnatMat = niftiread(infoAnat);
 

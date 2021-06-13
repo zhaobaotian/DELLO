@@ -13,14 +13,7 @@ classdef DELLO_loc < handle
         AnatMat
         CTmat
         
-        UIFigure
-        
-        UISlider
-        
-        UIAX
-        
-        
-        
+        ElectrodeInfo
         
     end
     
