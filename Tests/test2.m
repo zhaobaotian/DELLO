@@ -33,6 +33,7 @@ end
 abc = DELLO_loc;
 abc.getInput;
 
+[Corr,GrpInd] = threshCTGUI(CTmat,3500,10);
 
 
 

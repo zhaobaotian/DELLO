@@ -1,7 +1,5 @@
 function obj = getVisPanel(obj)
-%GETVISPANEL Summary of this function goes here
-%   Detailed explanation goes here
-
+%GETVISPANEL 
 % Open the visualization panel
 
 end
