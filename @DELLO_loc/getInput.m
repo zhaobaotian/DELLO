@@ -5,6 +5,5 @@ obj.Anat          = InputApp.MRIFile;
 obj.PostCT        = InputApp.CTFile;
 obj.ElectrodeInfo = InputApp.ElectrodeInfo;
 InputApp.delete;
-
 end
 

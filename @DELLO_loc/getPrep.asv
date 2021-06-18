@@ -3,15 +3,8 @@ function obj = getPrep(obj)
 %   Detailed explanation goes here
 % Move the CT to the 3DT1 space: spm evaluate
 MRI = spm_vol('3DT1.nii');
-postCT = spm_vol('postCT.nii');
-x = spm_coreg(MRI,postCT);
- M  = spm_matrix(x);
-MM = zeros(4,4,numel(postCT));
-
-MM = spm_get_space(postCT.fname);
-
-spm_get_space(postCT.fname, M\MM(:,:));
-% Done
+postCT = spm_vol('postCT.nii')
+x = spm_coreg(varargin)
 % Coregister and reslice the MRI to the CT
 
 % Segment the MRI
