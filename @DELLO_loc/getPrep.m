@@ -5,16 +5,26 @@ function obj = getPrep(obj)
 MRI = spm_vol('3DT1.nii');
 postCT = spm_vol('postCT.nii');
 x = spm_coreg(MRI,postCT);
- M  = spm_matrix(x);
+M  = spm_matrix(x);
 MM = zeros(4,4,numel(postCT));
-
 MM = spm_get_space(postCT.fname);
-
 spm_get_space(postCT.fname, M\MM(:,:));
-% Done
-% Coregister and reslice the MRI to the CT
+
+% Reslice the MRI to the CT
+P = {'postCT.nii';'3DT1.nii'};
+% Parameters
+flags.mean = false;
+flags.which = 1;
+spm_reslice(P,flags)
 
 % Segment the MRI
+load('SegmentJob.mat')
+% TODO:
+% 1) Change the target volume
+% 2) Change the TPM volume location when used
+job.channel.vols = {'D:\DELLO_data\dengshengyang\rawTest\r3DT1.nii'};
+spm_preproc_run(job)
+
 
 % create brain mask using segmented images
 % Read the matrix
