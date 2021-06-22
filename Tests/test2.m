@@ -35,7 +35,27 @@ abc.getInput;
 
 [Corr,GrpInd] = threshCTGUI(CTmat,3500,10);
 
+% Transform the coordinates
+% transform the NEW coordiantes to slice coordinate system
+WorldCorr = [28,13.5,54.3];
+infoFST1 = niftiinfo('3DT1.nii');
+M_FS = infoFST1.Transform.T';
+% % Read contacts name
+% ContactsName = obj.ElectrodeName;
+% Read contacts raw coordinates
+ContactsPos = WorldCorr;
+ContactsPos(:,4) = 1;
+ContactsPostionsNewijk = zeros(size(ContactsPos,1),4);
+for i = 1:size(ContactsPos,1)
+    ContactsPostionsNewijk(i,:) = inv(M_FS)*ContactsPos(i,:)';
+end
 
+ContactsPostionsNewijk = ContactsPostionsNewijk(:,1:3);
+ContactsPostionsNewijk = round(ContactsPostionsNewijk);
+SliceCorr              = ContactsPostionsNewijk;
+
+
+M_FS * ContactsPostionsNewijk'
 
 
 
