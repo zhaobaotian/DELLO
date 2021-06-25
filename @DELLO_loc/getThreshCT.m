@@ -5,6 +5,8 @@ function obj = getThreshCT(obj)
     % Brain mask threshold
     BrainMaskF  = niftiinfo('BrainMask.nii');
     BrainMask   = niftiread(BrainMaskF);
+    % TODO: Erode the mask to make it smaller
+    
     
     CTmat(~BrainMask) = 0;
     CTthresh = prctile(CTmat(:),obj.CTthresh); % 95% percentile threshold to show the electrodes
