@@ -1,9 +1,9 @@
 function obj = getPrep(obj)
-%GETPREP Summary of this function goes here
-%   Detailed explanation goes here
+%GETPREP Prepare the MRI and post CT images
+
+MRI = spm_vol(obj.Anat);
+postCT = spm_vol(obj.PostCT);
 % Move the CT to the 3DT1 space: spm evaluate
-MRI = spm_vol('3DT1.nii');
-postCT = spm_vol('postCT.nii');
 x = spm_coreg(MRI,postCT);
 M  = spm_matrix(x);
 MM = zeros(4,4,numel(postCT));
@@ -11,7 +11,7 @@ MM = spm_get_space(postCT.fname);
 spm_get_space(postCT.fname, M\MM(:,:));
 
 % Reslice the MRI to the CT
-P = {'postCT.nii';'3DT1.nii'};
+P = {obj.PostCT;obj.Anat};
 % Parameters
 flags.mean = false;
 flags.which = 1;
@@ -19,10 +19,17 @@ spm_reslice(P,flags)
 
 % Segment the MRI
 load('SegmentJob.mat')
-% TODO:
+
 % 1) Change the target volume
+TargVol = dir('r*.nii');
+job.channel.vols = {[pwd, filesep, TargVol.name]};
 % 2) Change the TPM volume location when used
-job.channel.vols = {'D:\DELLO_data\dengshengyang\rawTest\r3DT1.nii'};
+spmPath = fileparts(which('spm.m'));
+
+for i = 1:6
+    job.tissue(i).tpm = {[spmPath, filesep, 'tpm\TPM.nii,',num2str(i)]};
+end
+
 spm_preproc_run(job)
 
 

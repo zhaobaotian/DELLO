@@ -3,25 +3,35 @@ classdef DELLO_loc < handle
     %   Detailed explanation goes here
     
     properties
+        % Input
         Anat
-        PostCT
-        
-        rPostCT % coregistered CT
-        
-        CorrImage
-        
-        AnatMat
-        CTmat
-        
+        PostCT  
         ElectrodeInfo
+        
+        % Parameters
+        CTthresh % Percent
+        
+        % Thresholded CT electrodes
+        RawElecPos
+        RawElecGrpInd
+        
+        % Results
+        ElectrodeNamePos
         
     end
     
     methods
         function obj = DELLO_loc()
-            %DELLO_LOC Construct an instance of this class
-            %   Detailed explanation goes here
+            % Check SPM
+            if ~exist('spm.m')
+                error('Please add SPM to path first')
+            elseif exist('spm.m')
+                fprintf('  ======================== \n SPM has been added to path \n')
+            end
             
+            spm('defaults', 'PET');
+            % Parameters
+            obj.CTthresh = 99.996;
         end
         
 

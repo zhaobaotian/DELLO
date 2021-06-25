@@ -135,3 +135,5 @@ end
 
 
 %%
+
+LocH.ElectrodeInfo.ElecName
