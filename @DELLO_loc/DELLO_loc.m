@@ -5,7 +5,7 @@ classdef DELLO_loc < handle
     properties
         % Input
         Anat
-        PostCT  
+        PostCT
         ElectrodeInfo
         
         % Parameters
@@ -16,7 +16,10 @@ classdef DELLO_loc < handle
         RawElecGrpInd
         
         % Results
-        ElectrodeNamePos
+        Targets
+        Entries
+        ElectrodeName
+        ElectrodePos
         
     end
     

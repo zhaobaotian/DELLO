@@ -4,5 +4,6 @@ LocH = DELLO_loc;
 LocH.getInput;
 LocH.getPrep;
 LocH.getThreshCT
+LocH.getLocateAuto
 % 
 

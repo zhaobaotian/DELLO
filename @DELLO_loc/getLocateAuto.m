@@ -1,13 +1,13 @@
 function [obj] = getLocateAuto(obj)
 %GETLOCATEAUTO Summary of this function goes here
 
-LocPanel                  = DELLO_loc_Panel_auto(obj);
+LocPanel    = DELLO_loc_Panel_auto(obj);
 
-
-obj.ElectrodeInfo.Entries = [];
-obj.ElectrodeInfo.Targets = [];
+% Calculate coordinates from targets and entry points
+% Pay attention to the electrode order
+obj.Entries = LocPanel.EntryCorr;
+obj.Targets = LocPanel.TargetCorr;
 
 LocPanel.delete;
 
 end
-
