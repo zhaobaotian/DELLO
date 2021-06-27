@@ -53,7 +53,8 @@ WhiteMsk = WhiteMat > 0;
 CSFMsk   = CSFMat > 0;
 
 GWCMsk = or(GrayMsk,or(WhiteMsk,CSFMsk));
-
+% GWCMsk = or(GrayMsk,WhiteMsk);
+% GWCMsk = WhiteMsk;
 
 GWCMskFill = imfill(GWCMsk,'holes');
 GSCMskFillInfo = GreyM;
