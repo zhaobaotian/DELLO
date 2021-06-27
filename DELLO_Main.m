@@ -7,7 +7,7 @@
 % 6. Add get current corr to the left slide bar
 % 7. Add type in current corr (kind of manual mode)
 % 8. MNI coordinates
-% 9. Review board slices
+% 9. Review board slices % set(gca, 'XDir','reverse')  Left and right issue
 % 10. Review board 3D MNI brain
 %%
 clear

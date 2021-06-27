@@ -57,6 +57,34 @@ SliceCorr              = ContactsPostionsNewijk;
 
 M_FS * ContactsPostionsNewijk'
 
+%% Test the coordinates
+WorldCorr = [-9.68376,12.26312,-13.66507];
+infoFST1 = niftiinfo('3DT1.nii');
+M_FS = infoFST1.Transform.T';
+% % Read contacts name
+% ContactsName = obj.ElectrodeName;
+% Read contacts raw coordinates
+ContactsPos = WorldCorr;
+ContactsPos(:,4) = 1;
+ContactsPostionsNewijk = zeros(size(ContactsPos,1),4);
+for i = 1:size(ContactsPos,1)
+    ContactsPostionsNewijk(i,:) = inv(M_FS)*ContactsPos(i,:)';
+end
+
+ContactsPostionsNewijk = ContactsPostionsNewijk(:,1:3);
+ContactsPostionsNewijk = round(ContactsPostionsNewijk);
+SliceCorr              = ContactsPostionsNewijk;
+
+MRIMatr = niftiread(infoFST1);
+
+figure
+imagesc(squeeze(MRIMatr(:,103,:)))
+set(gca, 'XDir','reverse')
+
+
+
+
+
 
 
 
