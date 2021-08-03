@@ -8,7 +8,8 @@ function obj = getThreshCT(obj)
     % TODO: Erode the mask to make it smaller
     SE = strel('sphere', 10);
     erodedMask = imerode(BrainMask,SE);
-    
+    % Write the eroded brain mask
+    niftiwrite(uint8(erodedMask),'BrainMaskEroded.nii',BrainMaskF)
     
     CTmat(~erodedMask) = 0;
     CTthresh = prctile(CTmat(:),obj.CTthresh); % 99.996% percentile threshold to show the electrodes

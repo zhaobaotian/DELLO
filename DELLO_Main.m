@@ -1,7 +1,7 @@
 %% TODO
-% 1. Save the Eroded brain Mask
+% 1. Save the Eroded brain Mask OK
 % 2. Sort the corr along x axis
-% 3. Add slide bar click button
+% 3. Add slide bar click button OK
 % 4. Make the axis yoked slide bars
 % 5. Make Review board
 % 6. Add get current corr to the left slide bar
@@ -11,7 +11,7 @@
 % 10. Review board 3D MNI brain
 %%
 clear
-cd('D:\DELLO_data\zhangke')
+cd('D:\DELLO_data\dengshengyang')
 LocH = DELLO_loc;
 LocH.getInput;
 LocH.getPrep;
@@ -21,4 +21,4 @@ LocH.getLocateAuto
 LocH.getWriteRes
 
 
-                                                                     
+
