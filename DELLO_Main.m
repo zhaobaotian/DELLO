@@ -2,7 +2,7 @@
 % 1. Save the Eroded brain Mask OK
 % 2. Sort the corr along x axis
 % 3. Add slide bar click button OK
-% 4. Make the axis yoked slide bars
+% 4. Make the axis yoked slide bars OK
 % 5. Make Review board
 % 6. Add get current corr to the left slide bar
 % 7. Add type in current corr (kind of manual mode)

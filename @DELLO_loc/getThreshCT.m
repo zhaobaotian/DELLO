@@ -20,5 +20,21 @@ function obj = getThreshCT(obj)
     obj.RawElecPos    = Corr;
     obj.RawElecGrpInd = GrpInd;
     
+    % Sort the corrdinates
+    FinalCorr   = [];
+    FinalGrpInd = [];
+    for i = 1:max(obj.RawElecGrpInd)
+        tempIndex = (obj.RawElecGrpInd == i);
+        tempCorr = obj.RawElecPos(tempIndex,:);
+        tempSortedCorr = sort(tempCorr);
+        tempGrpInd = ones(size(tempCorr,1),1) .* i;
+        
+        FinalCorr   = [FinalCorr;tempSortedCorr];
+        FinalGrpInd = [FinalGrpInd;tempGrpInd];
+    end
+    
+    obj.RawElecPos    = FinalCorr;
+    obj.RawElecGrpInd = FinalGrpInd;
+    
 end
     
