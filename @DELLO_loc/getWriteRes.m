@@ -5,7 +5,7 @@ function obj = getWriteRes(obj)
 obj.ElectrodeName = [];
 for i = 1:length(obj.ElectrodeInfo.ElecName)
     tempName = [];
-    for j = 1:str2double(obj.ElectrodeInfo.NumContact{i})   
+    for j = 1:obj.ElectrodeInfo.NumContact(i) 
         tempName{j} = [obj.ElectrodeInfo.ElecName{i},num2str(j)];
         tempName = tempName';
     end
@@ -25,7 +25,7 @@ for i = 1:length(obj.ElectrodeInfo.ElecName)
     y = obj.Entries(i,2);
     z = obj.Entries(i,1);
     
-    n = str2double(obj.ElectrodeInfo.NumContact{i});
+    n = obj.ElectrodeInfo.NumContact(i);
     
     tempCorr = coordinate_calculator_loop(a,b,c,x,y,z,n);    
     
@@ -50,6 +50,11 @@ fclose(fileID);
 
 % Write Coordinates to files
 dlmwrite('Elec_Pos.txt',obj.ElectrodePos,'precision','%.5f')
+
+% Write MNI coordinates
+
+
+dlmwrite('%s',wPosElectrode,'precision',18);
 
 end
 
