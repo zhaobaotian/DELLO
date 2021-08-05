@@ -1,7 +1,6 @@
 %% TODO
 
 % 5. Make Review board
-% 8. MNI coordinates
 % 9. Review board slices % set(gca, 'XDir','reverse')  Left and right issue
 % 10. Review board 3D MNI brain
 %%

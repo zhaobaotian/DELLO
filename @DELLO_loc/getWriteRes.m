@@ -52,9 +52,11 @@ fclose(fileID);
 dlmwrite('Elec_Pos.txt',obj.ElectrodePos,'precision','%.5f')
 
 % Write MNI coordinates
+PosElectrode = obj.ElectrodePos;
+iyFile = dir('iy_*.nii');
+wPosElectrode = subCorr2MNICorr(PosElectrode,iyFile.name);
 
-
-dlmwrite('%s',wPosElectrode,'precision',18);
+dlmwrite('Elec_MNI_Pos.txt',wPosElectrode,'precision','%.5f');
 
 end
 
