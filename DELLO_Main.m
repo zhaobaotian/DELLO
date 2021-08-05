@@ -1,8 +1,7 @@
 %% TODO
 
-% 5. Make Review board
-% 9. Review board slices % set(gca, 'XDir','reverse')  Left and right issue
-% 10. Review board 3D MNI brain
+% 11. fix the coordinate calculation bug: change to the world coordiantes
+% to avoid the different layer thickness
 %%
 clear
 cd('D:\DELLO_data\dengshengyang')
@@ -34,13 +33,8 @@ DepthEle.Yeo7Atlas  = 'D:\DELLO\Atlas\Yeo2011_7Networks_MNI152 (Yeo 2011).nii';
 DepthEle.AAL3LabelsFile = 'D:\DELLO\Atlas\AAL3v1_1mm.nii.txt';
 DepthEle.Yeo7LabelsFile = 'D:\DELLO\Atlas\Yeo2011_7Networks_MNI152 (Yeo 2011).txt';
 
-DepthEle.LabelYeo7  = ;
-
-
-
-
-
-DELLO_Review_Pannel
+% Review the results
+DELLO_Review_Pannel(DepthEle)
 
 
 
