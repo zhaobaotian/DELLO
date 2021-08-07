@@ -37,8 +37,7 @@ for i = 1:length(obj.ElectrodeName)
         tempVoxel = tempVoxel(tempVoxel ~= 0);
         obj.Yeo7Index(i,:) = mode(tempVoxel);
         assert(length(obj.Yeo7Index(i,:)) == 1)
-    end
-    
+    end  
 end
 
 

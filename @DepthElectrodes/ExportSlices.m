@@ -51,7 +51,8 @@ set(gca,'xdir','reverse');
 plot(CorrTemp(3),CorrTemp(2),'r*','MarkerSize',12)
 set(gca,'xtick',[],'ytick',[]);
 set(gcf,'Position',[100 100 800 800])
-print([obj.ElectrodeName{i} '_C.png'],'-dpng','-r300')
+% print([obj.ElectrodeName{i} '_C.png'],'-dpng','-r300')
+saveas(gcf,[obj.ElectrodeName{i} '_C.png'])
 close
 
 % Axial
@@ -68,7 +69,8 @@ plot(CorrTemp(3),CorrTemp(1),'r*','MarkerSize',12)
 set(gca,'xtick',[],'ytick',[]);
 set(gcf,'Position',[100 100 800 800])
 camroll(180)
-print([obj.ElectrodeName{i} '_A.png'],'-dpng','-r300')
+% print([obj.ElectrodeName{i} '_A.png'],'-dpng','-r300')
+saveas(gcf,[obj.ElectrodeName{i} '_A.png'])
 close
 
 % Sagittal
@@ -85,7 +87,8 @@ plot(CorrTemp(2),CorrTemp(1),'r*','MarkerSize',12)
 set(gca,'xtick',[],'ytick',[]);
 set(gcf,'Position',[100 100 800 800])
 camroll(90)
-print([obj.ElectrodeName{i} '_S.png'],'-dpng','-r300')
+% print([obj.ElectrodeName{i} '_S.png'],'-dpng','-r300')
+saveas(gcf,[obj.ElectrodeName{i} '_S.png'])
 close
 
 end

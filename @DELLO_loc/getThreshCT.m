@@ -6,7 +6,7 @@ CTmat = niftiread(infoCT);
 BrainMaskF  = niftiinfo('BrainMask.nii');
 BrainMask   = niftiread(BrainMaskF);
 % TODO: Erode the mask to make it smaller
-SE = strel('sphere', 10);
+SE = strel('sphere', 3);
 erodedMask = imerode(BrainMask,SE);
 % Write the eroded brain mask
 niftiwrite(uint8(erodedMask),'BrainMaskEroded.nii',BrainMaskF)

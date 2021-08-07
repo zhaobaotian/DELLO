@@ -1,11 +1,12 @@
 %% TODO
 
-% Export result slice and table
 % Reorganize the GUI
-% 
+
+% Fix the export slice bug
+
 %%
 clear
-cd('D:\DELLO_data\dengshengyang')
+cd('D:\DELLO_data\houwei')
 LocH = DELLO_loc;
 LocH.getInput;
 LocH.getPrep;
@@ -35,7 +36,7 @@ DepthEle.LabelWhiteMatterElectrodes;
 DepthEle.LabelAAL3
 DepthEle.LabelYeo7
 
-
+DepthEle.ExportSlices
 % Review the results
 DELLO_Review_Pannel(DepthEle)
 
