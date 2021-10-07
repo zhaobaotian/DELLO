@@ -5,8 +5,9 @@ function obj = LabelWhiteMatterElectrodes(obj)
 infoFST1 = niftiinfo(obj.GreyMask);
 ContactsPostionsNewijk = obj.ContactsPostionsIJK;
 
-GreyMask = niftiread(infoFST1);
-
+GreyMask = double(niftiread(infoFST1));
+GreyMask = GreyMask * infoFST1.MultiplicativeScaling;
+GreyMask = GreyMask > 0;
 Radius = obj.ElectrodeRadius;
 WholeVoxel = (Radius*2 + 1)^3;
 

@@ -1,9 +1,5 @@
-%% TODO
-
-% Reorganize the GUI
-
-% Fix the export slice bug
-
+addpath(genpath('C:\Users\THIENC\Desktop\DELLO'))
+addpath('C:\Users\THIENC\Desktop\spm12_7219')
 %%
 clear
 cd('D:\CCEP_seg\CCEP_Raw_008\Location')
@@ -13,15 +9,21 @@ SegMRI
 DepthEle = DepthElectrodes;
 
 % Parameters
-DepthEle.WhiteMatterPercentageThreshold = 0.99;
+DepthEle.WhiteMatterPercentageThreshold = 0.9; % At least 90% of surrounding voxel should be grey matter
+AnatF     = dir('BNI*.nii');
+GreyF     = dir('c1*.nii');
+EleName   = dir('*Name.txt');
+ElePos    = dir('*Pos.txt');
+ElePos    = ElePos(~contains({ElePos.name},'MNI'));
+EleMNIPos = dir('*MNI_Pos.txt');
 
-DepthEle.LoadAnat;
-DepthEle.LoadElectrodeNameFile;
-DepthEle.LoadElectrodePosFile;
-DepthEle.LoadElectrodePosMNIFile;
+DepthEle.AnatFile            = AnatF.name;
+DepthEle.ElectrodeNameFile   = EleName.name;
+DepthEle.ElectrodePosFile    = ElePos.name;
+DepthEle.ElectrodePosMNIFile = ElePos.name;
 
 DepthEle.BrainMask = 'BrainMask.nii';
-GreyF = dir('c1*.nii');
+
 DepthEle.GreyMask  = GreyF.name;
 
 DepthEle.AAL3Atlas  = 'C:\Users\THIENC\Desktop\DELLO\Atlas\AAL3v1_1mm.nii';
@@ -35,8 +37,10 @@ DepthEle.LabelOutBrainElectrodes;
 DepthEle.LabelWhiteMatterElectrodes;
 DepthEle.LabelAAL3
 DepthEle.LabelYeo7
-
 DepthEle.ExportResultTable
+
+DELLO_Review_Pannel(DepthEle)
+
 
 
 

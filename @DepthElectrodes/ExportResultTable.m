@@ -16,6 +16,11 @@ for i = 1:length(obj.ElectrodeName)
         end        
     end
 end
+EleNamesLoc = obj.ElectrodeName;
+GrayIdx     = and(~obj.WhiteMatterLoc,~obj.OutBrain);
+CorrInd     = obj.ElectrodePos;
+CorrMNI     = obj.ElectrodePosMNI;
+save('GrayEle.mat','EleNamesLoc','GrayIdx','CorrInd','CorrMNI')
 
 % Yeo7
 for i = 1:length(obj.ElectrodeName)
