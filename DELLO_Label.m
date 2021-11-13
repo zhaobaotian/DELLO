@@ -2,7 +2,7 @@ addpath(genpath('C:\Users\THIENC\Desktop\DELLO'))
 addpath('C:\Users\THIENC\Desktop\spm12_7219')
 %%
 clear
-cd('D:\CCEP_seg\CCEP_Raw_008\Location')
+cd('D:\DELLOTestChao\houweiTest2')
 SegMRI
 
 % Atlas
@@ -20,7 +20,7 @@ EleMNIPos = dir('*MNI_Pos.txt');
 DepthEle.AnatFile            = AnatF.name;
 DepthEle.ElectrodeNameFile   = EleName.name;
 DepthEle.ElectrodePosFile    = ElePos.name;
-DepthEle.ElectrodePosMNIFile = ElePos.name;
+DepthEle.ElectrodePosMNIFile = EleMNIPos.name;
 
 DepthEle.BrainMask = 'BrainMask.nii';
 
