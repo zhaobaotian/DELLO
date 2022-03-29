@@ -11,6 +11,7 @@ for i = 1:size(CTmatBi,3)
     stats2D{i} = regionprops(squeeze(CTmatBi(:,:,i)));
 end
 
+centroids1 = [];
 for i = 1:size(CTmatBi,3)
     % figure
     %     imshow(squeeze(CTmatBi(:,:,i)))
@@ -30,6 +31,7 @@ for i = 1:size(CTmatBi,1)
     stats2D{i} = regionprops(squeeze(CTmatBi(i,:,:)));
 end
 
+centroids2 = [];
 for i = 1:size(CTmatBi,1)
     % figure
     %     imshow(squeeze(CTmatBi(:,:,i)))
@@ -48,6 +50,7 @@ for i = 1:size(CTmatBi,2)
     stats2D{i} = regionprops(squeeze(CTmatBi(:,i,:)));
 end
 
+centroids3 = [];
 for i = 1:size(CTmatBi,2)
     % figure
     %     imshow(squeeze(CTmatBi(:,:,i)))
@@ -60,7 +63,7 @@ for i = 1:size(CTmatBi,2)
     end
 end
 
-centroidsAll = [];
+centroidsAll  = [];
 centroidsAll1 = cat(1,centroids1{:});
 centroidsAll2 = cat(1,centroids2{:});
 centroidsAll3 = cat(1,centroids3{:});
@@ -109,7 +112,7 @@ f.Position = [100 100 800 800];
 f.Visible  = 'on';
 uiwait
     function plotElec(source,event)
-        
+        CTmatBi = [];
         CTmatBi = CTmat;
         CTmatBi = CTmatBi > str2num(editfield.String);
         
@@ -119,6 +122,7 @@ uiwait
             stats2D{i} = regionprops(squeeze(CTmatBi(:,:,i)));
         end
         
+        centroids1 = [];
         for i = 1:size(CTmatBi,3)
             % figure
             %     imshow(squeeze(CTmatBi(:,:,i)))
@@ -138,6 +142,7 @@ uiwait
             stats2D{i} = regionprops(squeeze(CTmatBi(i,:,:)));
         end
         
+        centroids2 = [];
         for i = 1:size(CTmatBi,1)
             % figure
             %     imshow(squeeze(CTmatBi(:,:,i)))
@@ -156,6 +161,7 @@ uiwait
             stats2D{i} = regionprops(squeeze(CTmatBi(:,i,:)));
         end
         
+        centroids3 = [];
         for i = 1:size(CTmatBi,2)
             % figure
             %     imshow(squeeze(CTmatBi(:,:,i)))

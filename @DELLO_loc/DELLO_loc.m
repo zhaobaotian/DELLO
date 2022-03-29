@@ -34,7 +34,7 @@ classdef DELLO_loc < handle
             
             spm('defaults', 'PET');
             % Parameters
-            obj.CTthresh = 99.996;
+            obj.CTthresh = 96;
         end
         
 

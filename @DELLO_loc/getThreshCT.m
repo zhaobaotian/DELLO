@@ -12,7 +12,8 @@ erodedMask = imerode(BrainMask,SE);
 niftiwrite(uint8(erodedMask),'BrainMaskEroded.nii',BrainMaskF)
 
 CTmat(~erodedMask) = 0;
-CTthresh = prctile(CTmat(:),obj.CTthresh); % 99.996% percentile threshold to show the electrodes
+% CTthresh = prctile(CTmat(:),obj.CTthresh); % 99.996% percentile threshold to show the electrodes
+CTthresh = max(CTmat(:)) - 5; % maximum intensity - 5 as threshold
 NElectrode = length(obj.ElectrodeInfo.ElecName);
 
 [Corr,GrpInd] = threshCTGUI(CTmat,CTthresh,NElectrode);
