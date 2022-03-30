@@ -35,7 +35,7 @@ DepthEle.LabelWhiteMatterElectrodes;
 DepthEle.LabelAAL3
 DepthEle.LabelYeo7
 
-DepthEle.ExportSlices
+%vDepthEle.ExportSlices
 % Review the results
 DELLO_Review_Pannel(DepthEle)
 
