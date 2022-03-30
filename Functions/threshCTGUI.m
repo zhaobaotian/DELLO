@@ -86,7 +86,7 @@ ax.Position = [100 150 600 600];
 isosurface(CTmatBi,0.5)
 hold on
 for i = 1:NElectrode
-    scatter3(centroidsAll(T == i,2),centroidsAll(T == i,3),centroidsAll(T == i,1),150,'MarkerFaceColor',[rand rand rand])
+    scatter3(centroidsAll(T == i,2),centroidsAll(T == i,3),centroidsAll(T == i,1),50,'MarkerFaceColor',[rand rand rand])
 end
 
 rotate3d(ax,'on')
