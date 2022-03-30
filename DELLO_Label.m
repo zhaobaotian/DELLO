@@ -1,8 +1,8 @@
+function DELLO_Label(Path)
 addpath(genpath('C:\Users\THIENC\Desktop\DELLO'))
 addpath('C:\Users\THIENC\Desktop\spm12_7219')
 %%
-clear
-cd('D:\DELLOTestChao\houweiTest2')
+cd(Path)
 SegMRI
 
 % Atlas
@@ -40,6 +40,7 @@ DepthEle.LabelYeo7
 DepthEle.ExportResultTable
 
 DELLO_Review_Pannel(DepthEle)
+end
 
 
 
