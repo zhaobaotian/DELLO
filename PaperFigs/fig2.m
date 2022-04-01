@@ -5,7 +5,7 @@ axis square
 view(3); 
 
 figure
-dendrogram(Z,100,'ColorThreshold',5)
+dendrogram(Z,160,'ColorThreshold',5)
 xticklabels([])
 
 
