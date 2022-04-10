@@ -172,7 +172,7 @@ end
 tempName = obj.ElectrodeName{i};
 
 sgtitle(['Channel Name: ',tempName,'-loc: ',tempWMO,'-AAL3: ',tempAAL,'-Yeo7: ',tempYEO7],'Interpreter','none','fontsize',20)
-saveas(gcf,[obj.ElectrodeName{i} '.png'])
+saveas(gcf,[num2str(i),'_',obj.ElectrodeName{i} '.png'])
 close
 
 end

@@ -13,6 +13,7 @@ LocH.getThreshCT;
 LocH.getLocateAuto;
 LocH.getWriteRes;
 
+%%
 % Review board
 DepthEle = DepthElectrodes;
 DepthEle.LoadAnat;
@@ -39,7 +40,7 @@ DepthEle.LabelYeo7
 % Review the results
 DELLO_Review_Pannel(DepthEle)
 
-
+%%
 
 
 
