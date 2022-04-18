@@ -22,7 +22,7 @@ load cdcol.mat
 groupAvgCoords = FullMNI;
 groupIsLeft = FullMNI(:,1) <=0;
 groupLabels = cellstr(string([1:size(FullMNI,1)]'));
-%% unlabeled
+%% unlabeled, not used
 cfg=[];
 cfg.view='l';
 cfg.elecSize = 4;
@@ -106,12 +106,23 @@ for i = 1:length(sub)
     cd ..
 end
 
+% The plot left and right seperately
+%% The left side first
+FullIsLeft = FullMNI(:,1) <=0;
+FullMNIL = FullMNI(FullIsLeft,:);
+FullIsGrayL = FullIsGray(FullIsLeft);
+groupAvgCoords = FullMNIL;
+groupIsLeft = FullIsLeft(FullIsLeft);
+FullgroupLabels = cellstr(string([1:size(FullMNI,1)]'));
+groupLabelsL = FullgroupLabels(FullIsLeft);
+groupLabels = groupLabelsL;
+
 cfg=[];
 cfg.view='l';
 cfg.elecSize = 4;
-cfg.elecColors = repmat(cdcol.grey,[size(FullMNI,1),1]);
-for i = 1:sum(~FullIsGray(:,1))
-    whitedist = find(~FullIsGray);
+cfg.elecColors = repmat(cdcol.grey,[size(FullMNIL,1),1]);
+for i = 1:sum(~FullIsGrayL(:,1))
+    whitedist = find(~FullIsGrayL);
     cfg.elecColors(whitedist(i),:) = cdcol.orange;
 end
 cfg.edgeBlack = 'n';
@@ -130,13 +141,11 @@ close
 cfg=[];
 cfg.view='li';
 cfg.elecSize = 4;
-cfg.elecColors = repmat(cdcol.grey,[size(FullMNI,1),1]);
-for i = 1:sum(~FullIsGray(:,1))
-    whitedist = find(~FullIsGray);
+cfg.elecColors = repmat(cdcol.grey,[size(FullMNIL,1),1]);
+for i = 1:sum(~FullIsGrayL(:,1))
+    whitedist = find(~FullIsGrayL);
     cfg.elecColors(whitedist(i),:) = cdcol.orange;
 end
-
-% cfg.elecColors(~FullIsGray,:) = repmat(cdcol.orange,[sum(~FullIsGray(:,1)),1]);
 cfg.edgeBlack = 'n';
 cfg.opaqueness=0.2;
 cfg.elecCoord=[groupAvgCoords groupIsLeft];
@@ -147,19 +156,27 @@ cfg.elecColorScale = [0 1];
 cfg.title='Seven patients on Avg. Brain';
 cfgOut=plotPialSurf('fsaverage',cfg);
 set(gcf,'Position',[100 100 750 600])
-print('groupGLLI.png','-dpng','-r600')
+print('groupGWLI.png','-dpng','-r600')
 close
+
+%% The right side
+FullIsLeft = FullMNI(:,1) <=0;
+FullMNIR = FullMNI(~FullIsLeft,:);
+FullIsGrayR = FullIsGray(~FullIsLeft);
+groupAvgCoords = FullMNIR;
+groupIsLeft = FullIsLeft(~FullIsLeft);
+FullgroupLabels = cellstr(string([1:size(FullMNI,1)]'));
+groupLabelsR = FullgroupLabels(~FullIsLeft);
+groupLabels = groupLabelsR;
 
 cfg=[];
 cfg.view='r';
 cfg.elecSize = 4;
-cfg.elecColors = repmat(cdcol.grey,[size(FullMNI,1),1]);
-for i = 1:sum(~FullIsGray(:,1))
-    whitedist = find(~FullIsGray);
+cfg.elecColors = repmat(cdcol.grey,[size(FullMNIR,1),1]);
+for i = 1:sum(~FullIsGrayR(:,1))
+    whitedist = find(~FullIsGrayR);
     cfg.elecColors(whitedist(i),:) = cdcol.orange;
 end
-
-% cfg.elecColors(~FullIsGray,:) = repmat(cdcol.orange,[sum(~FullIsGray(:,1)),1]);
 cfg.edgeBlack = 'n';
 cfg.opaqueness=0.2;
 cfg.elecCoord=[groupAvgCoords groupIsLeft];
@@ -170,20 +187,17 @@ cfg.elecColorScale = [0 1];
 cfg.title='Seven patients on Avg. Brain';
 cfgOut=plotPialSurf('fsaverage',cfg);
 set(gcf,'Position',[100 100 750 600])
-print('groupGMR.png','-dpng','-r600')
+print('groupGWR.png','-dpng','-r600')
 close
 
 cfg=[];
 cfg.view='ri';
 cfg.elecSize = 4;
-cfg.elecColors = repmat(cdcol.grey,[size(FullMNI,1),1]);
-
-for i = 1:sum(~FullIsGray(:,1))
-    whitedist = find(~FullIsGray);
+cfg.elecColors = repmat(cdcol.grey,[size(FullMNIR,1),1]);
+for i = 1:sum(~FullIsGrayR(:,1))
+    whitedist = find(~FullIsGrayR);
     cfg.elecColors(whitedist(i),:) = cdcol.orange;
 end
-
-% cfg.elecColors(~FullIsGray,:) = repmat(cdcol.orange,[sum(~FullIsGray(:,1)),1]);
 cfg.edgeBlack = 'n';
 cfg.opaqueness=0.2;
 cfg.elecCoord=[groupAvgCoords groupIsLeft];
@@ -194,7 +208,7 @@ cfg.elecColorScale = [0 1];
 cfg.title='Seven patients on Avg. Brain';
 cfgOut=plotPialSurf('fsaverage',cfg);
 set(gcf,'Position',[100 100 750 600])
-print('groupGMRI.png','-dpng','-r600')
+print('groupGWRI.png','-dpng','-r600')
 close
 
 %% Label AAL
