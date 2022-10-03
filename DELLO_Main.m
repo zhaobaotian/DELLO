@@ -1,11 +1,9 @@
-%% TODO
-
-% Reorganize the GUI
-% Fix the export slice bug
-% Add notification if the electrode has already been labeled
+%% Path
+addpath(genpath('C:\Users\THIENC\Desktop\DELLO'))
+addpath('C:\Users\THIENC\Desktop\spm12_7219')
 %%
 clear
-cd('D:\DELLO_Data\zhaochenxi')
+cd('D:\DELLO_Data\ZCX_Demo')
 LocH = DELLO_loc;
 LocH.getInput;
 LocH.getPrep;
