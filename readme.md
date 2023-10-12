@@ -1,4 +1,6 @@
 #### DELLO is for quick depth electrode localizer
+Author: Baotian Zhao
+Email: zhaobaotian0220@foxmail.com
 
 **Input** (in Nifti format, uncompressed)
 
