@@ -2,7 +2,11 @@ function obj = ExportSlices(obj)
 
 %% Load the files
 % Anat
-infoMRI   = niftiinfo('3DT1.nii');
+if exist('3DT1.nii')
+    infoMRI   = niftiinfo('3DT1.nii');
+elseif exist('anat.nii')
+    infoMRI   = niftiinfo('anat.nii');
+end
 AnatMat = niftiread(infoMRI);
 
 % % CT with brain mask
@@ -16,7 +20,12 @@ AnatMat = niftiread(infoMRI);
 %% Make the coordinates
 IndividualCorr = obj.ElectrodePos;
 % Convert to slice ijk
-infoFST1 = niftiinfo('3DT1.nii');
+if exist('3DT1.nii')
+    infoFST1   = niftiinfo('3DT1.nii');
+elseif exist('anat.nii')
+    infoFST1   = niftiinfo('anat.nii');
+end
+
 M_FS = infoFST1.Transform.T';
 
 % Read contacts raw coordinates
