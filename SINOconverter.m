@@ -2,10 +2,10 @@
 clear
 addpath(genpath('C:\Users\su_fe\Desktop\Codes\DELLO'))
 addpath('C:\Users\su_fe\Desktop\spm12_7219')
-subPath = 'D:\Bailu';
+subPath = 'D:\DELLO_data\Wang Yifan';
 %% Parameters
 anatFile = 'anat.nii';
-CorrFile = 'exportTrajectory-RAS-白露.csv';
+CorrFile = 'exportTrajectory-RAS-王一凡.csv';
 %% Calculate coordinates in individual space
 cd(subPath)
 RawRAS = readtable(CorrFile);

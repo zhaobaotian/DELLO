@@ -8,8 +8,8 @@ obj.ElectrodeName = [];
 for i = 1:length(obj.ElectrodeInfo.ElecName)
     tempName = [];
     for j = 1:obj.ElectrodeInfo.NumContact(i) 
-        tempName{j} = [obj.ElectrodeInfo.ElecName{i},num2str(j)];
-        tempName = tempName';
+        tempName{j,1} = [obj.ElectrodeInfo.ElecName{i},num2str(j)];
+        % tempName = tempName';
     end
     obj.ElectrodeName = [obj.ElectrodeName;tempName];    
 end
