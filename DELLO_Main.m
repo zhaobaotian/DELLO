@@ -1,9 +1,9 @@
 %% Path
-addpath(genpath('C:\Users\THIENC\Desktop\DELLO'))
-addpath('C:\Users\THIENC\Desktop\spm12_7219')
+addpath(genpath('C:\Users\su_fe\Desktop\Codes\DELLO'))
+addpath('C:\Users\su_fe\Desktop\spm12_7219')
 %%
 clear
-cd('D:\DELLO_Data\ZCX_Demo')
+cd('D:\DELLO_data\DEMOdata')
 LocH = DELLO_loc;
 LocH.getInput;
 LocH.getPrep;
